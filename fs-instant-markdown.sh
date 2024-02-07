@@ -14,18 +14,10 @@ host=http://localhost:8090
 server_pid=""
 update_pid=""
 
-trap ctrl_c INT
-
-function ctrl_c {
-	curl $host -X DELETE
-	echo "DELETE sent!"
-	sleep 1
-	exit 0
-}
-
 declare -A errors
 errors[curl]="Curl utility is required! Aborting!"
 errors[imd]="instant-markdown-d (https://github.com/instant-markdown/vim-instant-markdown) is required! Aborting!"
+
 
 #########################################
 # Check existence of required utilities #
