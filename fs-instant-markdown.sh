@@ -18,7 +18,6 @@ declare -A errors
 errors[curl]="Curl utility is required! Aborting!"
 errors[imd]="instant-markdown-d (https://github.com/instant-markdown/vim-instant-markdown) is required! Aborting!"
 
-
 #########################################
 # Check existence of required utilities #
 #########################################
