@@ -16,7 +16,7 @@ update_pid=""
 
 declare -A errors
 errors[no_curl]="Curl utility is required! Aborting..."
-errors[no_imd]="instant-markdown-d (https://github.com/instant-markdown/vim-instant-markdown) is required! Aborting..."
+errors[no_imd]="instant-markdown-d (see https://github.com/instant-markdown/vim-instant-markdown) is required! Aborting..."
 errors[arg_err]="Argument not recognized! Aborting..."
 errors[path_req]="Path parameter (-p|--path parameter [path]) is required!"
 
@@ -40,12 +40,14 @@ See: https://github.com/wiredolphin/instant-markdown-d/tree/fs-instant-markdown
 Usage: ./$c [options]
   -a, --anchor                      Makes instant-markdown-d server in
                                     add id to HTML headings
-  -b, --browser <browser>           Set the preferred browser launched by the
-                                    instant-markdown-d server
-  -d, --debug                       Pass this argument to the instant-markdown-d
+  -b, --browser <browser>           Set the preferred browser launched
+                                    by the instant-markdown-d server
+  -d, --debug                       Pass this argument to the
+                                    instant-markdown-d
   -v, --verbose                     Make instant-markdown-d verbose
   -p, --path <path>                 Set the path to be watched
-  -t, --theme <theme>               Pass the argument to the instant-markdown-d server
+  -t, --theme <theme>               Pass the argument to the
+                                    instant-markdown-d server
   -h, --help                        Print this help and exits
 EOF
 	echo "$help"
