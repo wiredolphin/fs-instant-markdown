@@ -2,8 +2,8 @@ fs-instant-markdown
 ===================
 
 A simple Bash script that watches a given directory for markdown
-files using inotifywait and PUTs the content of modified files
-to the instant-markdown-d server.
+files using [inotifywait](https://linux.die.net/man/1/inotifywait) and PUTs
+the content of modified files to the instant-markdown-d server.
 
 ### Usage
 
@@ -16,6 +16,12 @@ cd fs-instant-markdown
 Make the script executable:
 ```bash
 chmod +x fs-instant-markdown.sh
+```
+
+[curl](https://curl.se/) command line utility is required.
+To install it on *Debian* systems
+```bash
+sudo apt install curl
 ```
 
 Execute with the available options:
@@ -37,7 +43,7 @@ Options:
                               instant-markdown-d server
 ```
 
-**IMPORTANT**
+### IMPORTANT!!!
 
 This scripts works currently only with the *fs-instant-markdown* branch
 of the [instant-markdown-d](https://github.com/wiredolphin/instant-markdown-d.git)
