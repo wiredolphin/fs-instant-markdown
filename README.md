@@ -19,7 +19,7 @@ chmod +x fs-instant-markdown.sh
 ```
 
 [curl](https://curl.se/) command line utility is required.
-To install it on *Debian* systems
+To install it on *Debian*:
 ```bash
 sudo apt install curl
 ```
