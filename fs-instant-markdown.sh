@@ -15,15 +15,48 @@ server_pid=""
 update_pid=""
 
 declare -A errors
-errors[curl]="Curl utility is required! Aborting!"
-errors[imd]="instant-markdown-d (https://github.com/instant-markdown/vim-instant-markdown) is required! Aborting!"
+errors[no_curl]="Curl utility is required! Aborting..."
+errors[no_imd]="instant-markdown-d (https://github.com/instant-markdown/vim-instant-markdown) is required! Aborting..."
+errors[arg_err]="Argument not recognized! Aborting..."
+errors[path_req]="Path parameter (-p|--path parameter [path]) is required!"
+
+#########################################
+#                                       #
+#########################################
+function print_help
+{
+  local c
+  c=$(caller)
+	c=${c##*/}
+	read -r -d '' help <<EOF
+fs-instant-markdown - vince.damiani@2024
+Watch a directory for markdown files changes,
+pass the changed file content to the instant-markdown-d
+server.
+
+A running instance of instant-markdown-d is required.
+See: https://github.com/wiredolphin/instant-markdown-d/tree/fs-instant-markdown
+
+Usage: ./$c [options]
+  -a, --anchor                      Makes instant-markdown-d server in
+                                    add id to HTML headings
+  -b, --browser <browser>           Set the preferred browser launched by the
+                                    instant-markdown-d server
+  -d, --debug                       Pass this argument to the instant-markdown-d
+  -v, --verbose                     Make instant-markdown-d verbose
+  -p, --path <path>                 Set the path to be watched
+  -t, --theme <theme>               Pass the argument to the instant-markdown-d server
+  -h, --help                        Print this help and exits
+EOF
+	echo "$help"
+}
 
 #########################################
 # Check existence of required utilities #
 #########################################
 function check_dependencies {
-  command -v curl >/dev/null 2>&1 || { echo ${errors[curl]} >&2; exit 1; }
-  command -v instant-markdown-d >/dev/null 2>&1 || { echo ${errors[imd]} >&2; exit 1; }
+  command -v curl >/dev/null 2>&1 || { echo ${errors[no_curl]} >&2; exit 1; }
+  command -v instant-markdown-d >/dev/null 2>&1 || { echo ${errors[no_imd]} >&2; exit 1; }
 }
 
 #########################################
@@ -97,6 +130,8 @@ function main
           shift
           ;;
         *)
+          echo "${errors[arg_err]}"
+          exit 1
           shift
           ;;
       esac
@@ -106,7 +141,7 @@ function main
   set -- "${_positional[@]}" # restore positional parameters
 
   if [[ -z "$path" ]]; then
-    echo "Path parameter (-p|--path parameter [path]) is required!"
+    echo "${errors[path_req]}"
     exit 1
   fi
 
