@@ -8,9 +8,14 @@ to the instant-markdown-d server.
 **IMPORTANT**
 
 This scripts works currently only with the *fs-instant-markdown* branch
+<<<<<<< HEAD
 of the [instant-markdown-d](https://github.com/wiredolphin/instant-markdown-d.git)
 repository
 (see https://github.com/wiredolphin/instant-markdown-d/tree/fs-instant-markdown)
+=======
+of the https://github.com/wiredolphin/instant-markdown-d/tree/fs-instant-markdown
+repository.
+>>>>>>> e2d088517bc577e3a8421265661f2c913104aeff
 
 To install it:
 
