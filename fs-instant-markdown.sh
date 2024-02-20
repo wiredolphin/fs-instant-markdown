@@ -40,6 +40,9 @@ See: https://github.com/wiredolphin/instant-markdown-d/tree/fs-instant-markdown
 Usage: ./$c [options]
   -a, --anchor                      Makes instant-markdown-d server in
                                     add id to HTML headings
+  --toc LEVELS                      Add table-of-content where level is
+                                    a list of heading levels to be used, i.e.: "[2,3]".
+                                    The --anchor options must be used in conjuction
   -b, --browser <browser>           Set the preferred browser launched
                                     by the instant-markdown-d server
   -d, --debug                       Pass this argument to the
@@ -92,6 +95,7 @@ function main
   local browser=''
   local anchor=''
   local theme=''
+  local toc=''
 
   if [[ -z "$*" ]]; then
     :
@@ -106,6 +110,11 @@ function main
           ;;
         -a|--anchor)
           anchor=1
+          shift
+          ;;
+        --toc)
+          toc="$2"
+          shift
           shift
           ;;
         -b|--browser)
@@ -151,6 +160,7 @@ function main
   declare -a opt=( --theme $theme)
   [ -n "$browser" ] && opt+=( --browser $browser)
   [ "$anchor" = 1 ] && opt+=( --anchor )
+  [ -n "$toc" ] && opt+=( --toc "$toc" )
   [ "$verbose" = 1 ] && opt+=( --verbose )
 
   [ $debug = 1 ] && echo "Starging instant-markdown-d server..."

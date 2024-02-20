@@ -33,6 +33,9 @@ Options:
 ```bash
 -a, --anchor                  Makes instant-markdown-d server in
                               add id to HTML headings
+--toc LEVELS                  Add table-of-content where level is
+                              a list of heading levels to be used, i.e.: "[2,3]".
+                              The --anchor options must be used in conjuction
 -b, --browser <browser>       Set the preferred browser launched
                               by the instant-markdown-d server
 -d, --debug                   Pass this argument to the
